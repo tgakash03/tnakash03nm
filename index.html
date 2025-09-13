@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash R | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
+      backdrop-filter: blur(10px);
+      scroll-behavior: smooth;
+      color: white;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+      background: rgba(30, 30, 47, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      margin: 20px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    header img:hover {
+      transform: scale(1.2);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    header h3 {
+      font-size: 1.3rem;
+      color: #ddd;
+      margin: 5px 0;
+    }
+
+    header h2 {
+      font-size: 1.5rem;
+      margin: 10px 0 20px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 10px auto;
+      color: #f1f1f1;
+    }
+
+    header a {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 15px;
+      color: white;
+      background: linear-gradient(135deg, #ff4b2b, #ff416c);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    header a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Sidebar Menu (FLOATING) */
+    .sidebar {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      left: auto;
+      transform: none;
+      background: rgba(30, 30, 47, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      z-index: 1000;
+      box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+
+      /* Optional: subtle floating animation */
+      animation: floatSidebar 3s ease-in-out infinite;
+    }
+
+    /* Keyframes for Floating Effect */
+    @keyframes floatSidebar {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Sections */
+    section {
+      padding: 70px 20px;
+      margin: 30px auto;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #fff;
+      display: block;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: transform 0.3s;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+    }
+
+    /* Projects */
+    .project-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 450px;
+      border-radius: 15px;
+      transition: transform 0.3s;
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(30, 30, 47, 0.85);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 20px 20px 0 0;
+      margin-top: 40px;
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    footer a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      background: white;
+      color: #1e1e2f;
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        border-radius: 15px 15px 0 0;
+        animation: none; /* Disable float on small screens */
+        padding: 10px 5px;
+      }
+
+      .sidebar a {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <a href="#personal-info">Personal Info</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <img src="./WhatsApp Image 2025-09-01 at 19.54.12_511f4e9a.jpg" alt="Akash R Profile">
+    <h1>Akash R</h1>
+    <h3>BCA Student</h3>
+    <h2>MRK College of Arts and Science</h2>
+    <p>I am a dedicated BCA student passionate about web development, creating interactive and user-friendly websites using HTML, CSS, and JavaScript. My goal is to become a skilled full-stack developer.</p>
+    <a href="#contact">Contact Me</a>
+  </header>
+
+  <!-- Personal Info -->
+  <section id="personal-info">
+    <h2>Personal Info</h2>
+    <p><strong>Address:</strong> Keezhaparuthikudi, Cuddalore District 6008302</p>
+    <p><strong>Blood Group:</strong> B+</p>
+    <p><strong>Roll No:</strong> 11524UBCA06</p>
+    <p><strong>Registration No:</strong> 24131150500121006</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">VS Code</div>
+      <div class="skill">Git / GitHub</div>
+      <div class="skill">Responsive Design</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>A personal portfolio site built with HTML, CSS, and JavaScript to showcase my skills, projects, and contact information.</p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <p>MRK College of Arts and Science</p>
+    <p>BCA, 2nd Year  3rd Semester</p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <h2>Contact</h2>
+    <a href="mailto:akashakash625227@gmail.com">Email</a>
+    <a href="tel:9150584260">Call</a>
+    <a href="https://github.com/tgakash03" target="_blank">GitHub</a>
+    <p style="margin-top:20px;">© 2025 Akash R</p>
+  </footer>
+
+  <!-- Scroll Animation -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+
+</html>
